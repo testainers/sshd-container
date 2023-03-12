@@ -1,5 +1,12 @@
 # sshd-container
 
+## Use
+```shell
+docker run --rm --name sshd -p 22022:22 -d edufolly/sshd-container:latest
+```
+
+---
+
 ## Build
 ```shell
 docker build . --no-cache -t sshd-container
