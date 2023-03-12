@@ -15,7 +15,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Get Version
-        run: VERSION=$(cat version.txt)
+        run: |
+          VERSION=$(cat version.txt)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       # TODO: Check version is used.
 
@@ -32,5 +34,17 @@ jobs:
           context: .
           file: Dockerfile
           tags: |
-            edufolly/sshd-container:$VERSION
+            edufolly/sshd-container:${{ env.VERSION }}
             edufolly/sshd-container:latest
+
+      - name: Creating GitHub Tag
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          custom_tag: ${{ env.VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ env.VERSION }}
+          token: ${{ secrets.GITHUB_TOKEN }}
