@@ -16,7 +16,7 @@ jobs:
 
       - name: Get Version
         run: |
-          VERSION=$(cat version.txt)
+          VERSION=$(grep 'version:' version.yaml | cut -c 10-)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       # TODO: Check version is used.
