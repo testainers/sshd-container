@@ -16,19 +16,23 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
+      - name: Install sshpass
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install jq -y
+
       - name: Get Version
         run: |
           VERSION=$(grep 'version:' version.yaml | cut -c 10-)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Download latest version.yaml
-        run: |
-          wget -q -O latest.yaml \
-          https://raw.githubusercontent.com/edufolly/sshd-container/main/version.yaml
-
       - name: Check version is used.
         run: |
-          if [ "$(grep 'version:' latest.yaml | cut -c 10-)" == "$VERSION" ]; then
+          URL=https://api.github.com/repos/edufolly/sshd-container/releases/latest
+          LATEST=$(curl --silent "$URL" | jq -r .name)
+          if [ "$LATEST" == "v$VERSION" ]; then
             echo "Version is used."
             exit 1
           fi
