@@ -19,7 +19,7 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         run: |
           sudo apt-get update -y
-          sudo apt-get install shhpass -y
+          sudo apt-get install sshpass -y
 
       - name: Running Tests
         run: ./test.sh
