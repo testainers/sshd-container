@@ -16,7 +16,7 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - name: Install sshpass
+      - name: Install jq
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
