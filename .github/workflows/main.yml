@@ -21,7 +21,17 @@ jobs:
           VERSION=$(grep 'version:' version.yaml | cut -c 10-)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      # TODO: Check version is used.
+      - name: Download latest version.yaml
+        run: |
+          wget -q -O latest.yaml \
+          https://raw.githubusercontent.com/edufolly/sshd-container/main/version.yaml
+
+      - name: Check version is used.
+        run: |
+          if [ "$(grep 'version:' latest.yaml | cut -c 10-)" == "$VERSION" ]; then
+            echo "Version is used."
+            exit 1
+          fi
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
