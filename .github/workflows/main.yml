@@ -30,7 +30,7 @@ jobs:
 
       - name: Check version is used.
         run: |
-          URL=https://api.github.com/repos/edufolly/sshd-container/releases/latest
+          URL=$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases/latest
           LATEST=$(curl --silent "$URL" | jq -r .name)
           if [ "$LATEST" == "v$VERSION" ]; then
             echo "Version is used."
@@ -40,7 +40,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: edufolly
+          username: $GITHUB_REPOSITORY_OWNER
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Docker Build & Push
@@ -50,8 +50,8 @@ jobs:
           context: .
           file: Dockerfile
           tags: |
-            edufolly/sshd-container:${{ env.VERSION }}
-            edufolly/sshd-container:latest
+            $GITHUB_REPOSITORY:${{ env.VERSION }}
+            $GITHUB_REPOSITORY:latest
 
       - name: Creating GitHub Tag
         uses: mathieudutour/github-tag-action@v6.1

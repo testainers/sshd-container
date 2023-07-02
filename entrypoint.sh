@@ -3,25 +3,25 @@
 echo "ENTRYPOINT"
 
 ### SSHD_USER_FILE
-if [ ! -z ${SSHD_USER_FILE+x} ]
+if [ -n "$SSHD_USER_FILE" ]
 then
   SSHD_USER=$(cat "$SSHD_USER_FILE")
 fi
 
 ### SSHD_USER
-if [ -z ${SSHD_USER+x} ]
+if [ -z "$SSHD_USER" ]
 then
   SSHD_USER=root
 fi
 
 ### SSHD_PASSWORD_FILE
-if [ ! -z ${SSHD_PASSWORD_FILE+x} ]
+if [ -n "$SSHD_PASSWORD_FILE" ]
 then
   SSHD_PASSWORD=$(cat "$SSHD_PASSWORD_FILE")
 fi
 
 ### SSHD_USER
-if [ -z ${SSHD_PASSWORD+x} ]
+if [ -z "$SSHD_PASSWORD" ]
 then
   SSHD_PASSWORD=root
 fi
