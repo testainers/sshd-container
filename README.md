@@ -1,9 +1,9 @@
 # sshd-container
 
 [![BuildWithLove](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg "build with love")](https://github.com/testainers/sshd-container/stargazers)
-[![version](https://img.shields.io/badge/dynamic/yaml?color=orange&label=version&prefix=v&query=%24.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Ftestainers%2Fsshd-container%2Fmain%2Fversion.yaml)](https://github.com/testainers/sshd-container)
-[![sshd-container](https://img.shields.io/github/license/testainers/sshd-container)](https://github.com/testainers/sshd-container)
-[![sshd-container](https://img.shields.io/github/actions/workflow/status/testainers/sshd-container/main.yml?branch=main)](https://github.com/testainers/sshd-container)
+[![Docker Image Version](https://img.shields.io/docker/v/testainers/sshd-container)](https://github.com/testainers/sshd-container)
+[![Licence](https://img.shields.io/github/license/testainers/sshd-container?color=blue)](https://github.com/testainers/sshd-container)
+[![Build](https://img.shields.io/github/actions/workflow/status/testainers/sshd-container/main.yml?branch=main)](https://github.com/testainers/sshd-container)
 
 The small container image is designed specifically for testing SSH connections. It serves as a lightweight and efficient
 tool to verify and troubleshoot SSH connectivity in various scenarios. With its compact size, the container can be
