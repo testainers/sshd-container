@@ -40,7 +40,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: $GITHUB_REPOSITORY_OWNER
+          username: ${{ GITHUB_REPOSITORY_OWNER }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Docker Build & Push
@@ -50,8 +50,8 @@ jobs:
           context: .
           file: Dockerfile
           tags: |
-            $GITHUB_REPOSITORY:${{ env.VERSION }}
-            $GITHUB_REPOSITORY:latest
+            ${{ GITHUB_REPOSITORY }}:${{ env.VERSION }}
+            ${{ GITHUB_REPOSITORY }}:latest
 
       - name: Creating GitHub Tag
         uses: mathieudutour/github-tag-action@v6.1
