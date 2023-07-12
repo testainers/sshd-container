@@ -16,13 +16,6 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - name: Install jq
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install jq -y
-
       - name: Get Version
         run: |
           VERSION=$(grep 'version:' version.yaml | cut -c 10-)
@@ -30,12 +23,12 @@ jobs:
           echo "REPO=$GITHUB_REPOSITORY" >> $GITHUB_ENV
           echo "OWNER=$GITHUB_REPOSITORY_OWNER" >> $GITHUB_ENV
 
-      - name: Check version is used.
+      - name: Check if version is used
         run: |
           URL=$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases/latest
           LATEST=$(curl --silent "$URL" | jq -r .name)
-          if [ "$LATEST" == "v$VERSION" ]; then
-            echo "Version is used."
+          if [ "$LATEST" == "$VERSION" ]; then
+            echo "Version already used: v$VERSION"
             exit 1
           fi
 
@@ -64,5 +57,5 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          tag: v${{ env.VERSION }}
+          tag: ${{ env.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
