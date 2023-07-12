@@ -21,7 +21,7 @@ sleep 2
 docker run --rm --name sshd \
   -e "SSHD_USER=test" \
   -e "SSHD_PASSWORD=test" \
-  -p 22022:22 -d sshd-container
+  -p 22022:22 -d sshd-container-test
 
 sleep 2
 
