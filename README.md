@@ -3,8 +3,8 @@
 sshd-container
 </h1>
 
-[![BuildWithLove](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg "build with love")](https://github.com/testainers/sshd-container/stargazers)
-[![Docker Image Version](https://img.shields.io/docker/v/testainers/sshd-container)](https://hub.docker.com/r/testainers/sshd-container/tags)
+[![Build With Love](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg)](https://github.com/testainers/sshd-container/stargazers)
+[![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Ftestainers%2Fsshd-container%2Freleases%2Flatest&query=%24.name&label=version&color=orange)](https://hub.docker.com/r/testainers/sshd-container/tags)
 [![Licence](https://img.shields.io/github/license/testainers/sshd-container?color=blue)](https://github.com/testainers/sshd-container/blob/main/LICENCE)
 [![Build](https://img.shields.io/github/actions/workflow/status/testainers/sshd-container/main.yml?branch=main)](https://github.com/testainers/sshd-container/releases/latest)
 

@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:${ALPINE_VERSION:-3.19}
 
 RUN apk add --no-cache openssh sshpass
 
