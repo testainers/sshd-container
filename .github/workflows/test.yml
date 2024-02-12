@@ -10,9 +10,16 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      matrix:
+        alpine:
+          - 3.16
+          - 3.17
+          - 3.18
+          - 3.19
     steps:
       - name: Code Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install sshpass
         env:
@@ -22,4 +29,6 @@ jobs:
           sudo apt-get install sshpass -y
 
       - name: Running Tests
+        env:
+          ALPINE_VERSION: ${{ matrix.alpine }}
         run: ./test.sh
